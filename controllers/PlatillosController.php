@@ -7,7 +7,6 @@ use app\models\PlatillosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use Yii;
 
 /**
  * PlatillosController implements the CRUD actions for Platillos model.

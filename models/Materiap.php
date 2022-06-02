@@ -13,7 +13,10 @@ use Yii;
  * @property string $id_clasificacion Clave foránea de la clasificación a la que pertenece la materia prima
  * @property string $descripcion Descripción que incluye detalles de la materia prima como por ejemplo el tamaño o la marca del producto
  *
- * @property Inventario $inventario
+ * @property Clasificacionmateriaprima $clasificacion
+ * @property Inventario[] $inventarios
+ * @property Recetas[] $recetas
+ * @property Unidadesmedida $uniMedida
  */
 class Materiap extends \yii\db\ActiveRecord
 {
@@ -37,6 +40,8 @@ class Materiap extends \yii\db\ActiveRecord
             [['id_uni_medida'], 'string', 'max' => 4],
             [['descripcion'], 'string', 'max' => 50],
             [['id_mp'], 'unique'],
+            [['id_uni_medida'], 'exist', 'skipOnError' => true, 'targetClass' => Unidadesmedida::className(), 'targetAttribute' => ['id_uni_medida' => 'id_uni_medida']],
+            [['id_clasificacion'], 'exist', 'skipOnError' => true, 'targetClass' => Clasificacionmateriaprima::className(), 'targetAttribute' => ['id_clasificacion' => 'id_clasificacion']],
         ];
     }
 
@@ -55,12 +60,42 @@ class Materiap extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Inventario]].
+     * Gets query for [[Clasificacion]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getInventario()
+    public function getClasificacion()
     {
-        return $this->hasOne(Inventario::className(), ['id_mp' => 'id_mp']);
+        return $this->hasOne(Clasificacionmateriaprima::className(), ['id_clasificacion' => 'id_clasificacion']);
+    }
+
+    /**
+     * Gets query for [[Inventarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getInventarios()
+    {
+        return $this->hasMany(Inventario::className(), ['id_mp' => 'id_mp']);
+    }
+
+    /**
+     * Gets query for [[Recetas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRecetas()
+    {
+        return $this->hasMany(Recetas::className(), ['id_mp' => 'id_mp']);
+    }
+
+    /**
+     * Gets query for [[UniMedida]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUniMedida()
+    {
+        return $this->hasOne(Unidadesmedida::className(), ['id_uni_medida' => 'id_uni_medida']);
     }
 }

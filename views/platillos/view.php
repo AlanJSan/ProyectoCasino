@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'costo_produccion',
             'precio_venta',
             'clasificacion',
+            'fotografia',
         ],
     ]) ?>
 

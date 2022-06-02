@@ -11,8 +11,9 @@ use Yii;
  * @property string $nombre_platillo Nombre del platillo
  * @property string|null $descripcion Descripción que incluye detalles del platillo como por ejemplo acompañamientos y/o presentación
  * @property float|null $costo_produccion Es el costo calculado de la suma de las cantidades de los ingredientes requeridos en el platillo y sus costos unitarios
- * @property int $precio_venta Precio de venta del platillo al público
+ * @property float $precio_venta Precio de venta del platillo al público
  * @property string $id_clasifplatillo Clave foránea de la clasificación a la que pertenece el platillo
+ * @property resource $fotografia Path para la fotografia
  *
  * @property Clasificaciones $clasifplatillo
  * @property Recetas[] $recetas
@@ -33,9 +34,9 @@ class Platillos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_platillo', 'nombre_platillo', 'precio_venta', 'id_clasifplatillo'], 'required'],
-            [['costo_produccion'], 'number'],
-            [['precio_venta'], 'integer'],
+            [['id_platillo', 'nombre_platillo', 'precio_venta', 'id_clasifplatillo', 'fotografia'], 'required'],
+            [['costo_produccion', 'precio_venta'], 'number'],
+            [['fotografia'], 'string'],
             [['id_platillo'], 'string', 'max' => 8],
             [['nombre_platillo'], 'string', 'max' => 60],
             [['descripcion'], 'string', 'max' => 200],
@@ -56,7 +57,8 @@ class Platillos extends \yii\db\ActiveRecord
             'descripcion' => Yii::t('app', 'Descripcion'),
             'costo_produccion' => Yii::t('app', 'Costo Produccion'),
             'precio_venta' => Yii::t('app', 'Precio Venta'),
-            'id_clasifplatillo' => Yii::t('app', 'Clasificación del platillo'),
+            'id_clasifplatillo' => Yii::t('app', 'Id Clasifplatillo'),
+            'fotografia' => Yii::t('app', 'Fotografia'),
         ];
     }
 

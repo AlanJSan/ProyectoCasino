@@ -18,7 +18,7 @@ class RecetasSearch extends Recetas
     {
         return [
             [['id_receta'], 'integer'],
-            [['id_mp', 'id_platillo'], 'safe'],
+            [['id_mp', 'id_platillo', 'id_unid_med_ing'], 'safe'],
             [['cantidad_ingrdte', 'costo_total_ingrdte'], 'number'],
         ];
     }
@@ -65,7 +65,8 @@ class RecetasSearch extends Recetas
         ]);
 
         $query->andFilterWhere(['like', 'id_mp', $this->id_mp])
-            ->andFilterWhere(['like', 'id_platillo', $this->id_platillo]);
+            ->andFilterWhere(['like', 'id_platillo', $this->id_platillo])
+            ->andFilterWhere(['like', 'id_unid_med_ing', $this->id_unid_med_ing]);
 
         return $dataProvider;
     }

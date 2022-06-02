@@ -17,9 +17,8 @@ class PlatillosSearch extends Platillos
     public function rules()
     {
         return [
-            [['id_platillo', 'nombre_platillo', 'descripcion', 'id_clasifplatillo'], 'safe'],
-            [['costo_produccion'], 'number'],
-            [['precio_venta'], 'integer'],
+            [['id_platillo', 'nombre_platillo', 'descripcion', 'id_clasifplatillo', 'fotografia'], 'safe'],
+            [['costo_produccion', 'precio_venta'], 'number'],
         ];
     }
 
@@ -66,7 +65,8 @@ class PlatillosSearch extends Platillos
         $query->andFilterWhere(['like', 'id_platillo', $this->id_platillo])
             ->andFilterWhere(['like', 'nombre_platillo', $this->nombre_platillo])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
-            ->andFilterWhere(['like', 'id_clasifplatillo', $this->id_clasifplatillo]);
+            ->andFilterWhere(['like', 'id_clasifplatillo', $this->id_clasifplatillo])
+            ->andFilterWhere(['like', 'fotografia', $this->fotografia]);
 
         return $dataProvider;
     }

@@ -30,9 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id_receta',
-            'materia',
-            'platillo.nombre_platillo',
+            'id_mp',
+            'id_platillo',
             'cantidad_ingrdte',
+            'id_unid_med_ing',
             'costo_total_ingrdte',
         ],
     ]) ?>

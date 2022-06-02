@@ -1,10 +1,10 @@
 <?php
 
+use app\models\Recetas;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use app\models\Recetas;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RecetasSearch */
@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_receta',
-            //'id_mp',
             [
                 "attribute" => "id_platillo",
                 "value" => "platillo.nombre_platillo",
@@ -40,8 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 "attribute" => "id_mp",
                 "value" => "materiap",
             ],
-            //'id_platillo',
             'cantidad_ingrdte',
+            'id_unid_med_ing',
             'costo_total_ingrdte',
             [
                 'class' => ActionColumn::className(),
@@ -50,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  }
             ],
         ],
-    ]);?>
+    ]); ?>
 
 
 </div>

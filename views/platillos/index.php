@@ -1,10 +1,10 @@
 <?php
 
+use app\models\Platillos;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use app\models\Platillos;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PlatillosSearch */
@@ -34,12 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'descripcion',
             'costo_produccion',
             'precio_venta',
-            // 'id_clasifplatillo',
+            //'id_clasifplatillo',
             [
                 "attribute" => "id_clasifplatillo",
                 "value" => "clasificacion",
                 "label" => "Clasificación"
             ],
+            'fotografia',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Platillos $model, $key, $index, $column) {

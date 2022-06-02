@@ -11,10 +11,12 @@ use Yii;
  * @property string $id_mp Clave foránea de la materia prima a la que corresponde el ingrediente del platillo
  * @property string $id_platillo Clave foránea del platillo al que se le asigna el ingrediente
  * @property float $cantidad_ingrdte Cantidad requerida del ingrediente para ese platillo
+ * @property string $id_unid_med_ing Clave foránea de la unidad de medida de los ingredientes de un platillo
  * @property float $costo_total_ingrdte Costo total de la cantidad del ingrediente
  *
- * @property Inventario $mp
+ * @property Materiap $mp
  * @property Platillos $platillo
+ * @property Unidadesmeding $unidMedIng
  */
 class Recetas extends \yii\db\ActiveRecord
 {
@@ -32,12 +34,13 @@ class Recetas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_mp', 'id_platillo', 'cantidad_ingrdte', 'costo_total_ingrdte'], 'required'],
+            [['id_mp', 'id_platillo', 'cantidad_ingrdte', 'id_unid_med_ing', 'costo_total_ingrdte'], 'required'],
             [['cantidad_ingrdte', 'costo_total_ingrdte'], 'number'],
-            [['id_mp'], 'string', 'max' => 5],
+            [['id_mp', 'id_unid_med_ing'], 'string', 'max' => 5],
             [['id_platillo'], 'string', 'max' => 8],
             [['id_platillo'], 'exist', 'skipOnError' => true, 'targetClass' => Platillos::className(), 'targetAttribute' => ['id_platillo' => 'id_platillo']],
-            [['id_mp'], 'exist', 'skipOnError' => true, 'targetClass' => Inventario::className(), 'targetAttribute' => ['id_mp' => 'id_mp']],
+            [['id_unid_med_ing'], 'exist', 'skipOnError' => true, 'targetClass' => Unidadesmeding::className(), 'targetAttribute' => ['id_unid_med_ing' => 'id_unid_med_ing']],
+            [['id_mp'], 'exist', 'skipOnError' => true, 'targetClass' => Materiap::className(), 'targetAttribute' => ['id_mp' => 'id_mp']],
         ];
     }
 
@@ -48,11 +51,11 @@ class Recetas extends \yii\db\ActiveRecord
     {
         return [
             'id_receta' => Yii::t('app', 'Id Receta'),
-            'id_mp' => Yii::t('app', 'Materia Prima'),
+            'id_mp' => Yii::t('app', 'Id Mp'),
             'id_platillo' => Yii::t('app', 'Id Platillo'),
             'cantidad_ingrdte' => Yii::t('app', 'Cantidad Ingrdte'),
+            'id_unid_med_ing' => Yii::t('app', 'Id Unid Med Ing'),
             'costo_total_ingrdte' => Yii::t('app', 'Costo Total Ingrdte'),
-            //'materia' => Yii::t('app', 'Materia Prima'),
         ];
     }
 
@@ -63,7 +66,7 @@ class Recetas extends \yii\db\ActiveRecord
      */
     public function getMp()
     {
-        return $this->hasOne(Inventario::className(), ['id_mp' => 'id_mp']);
+        return $this->hasOne(Materiap::className(), ['id_mp' => 'id_mp']);
     }
 
     public function getMateriap(){
@@ -81,4 +84,13 @@ class Recetas extends \yii\db\ActiveRecord
         return $this->hasOne(Platillos::className(), ['id_platillo' => 'id_platillo']);
     }
 
+    /**
+     * Gets query for [[UnidMedIng]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUnidMedIng()
+    {
+        return $this->hasOne(Unidadesmeding::className(), ['id_unid_med_ing' => 'id_unid_med_ing']);
+    }
 }

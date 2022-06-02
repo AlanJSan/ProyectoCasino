@@ -23,7 +23,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cantidad_ingrdte') ?>
 
-    <?= $form->field($model, 'costo_total_ingrdte') ?>
+    <?= $form->field($model, 'id_unid_med_ing') ?>
+
+    <?php // echo $form->field($model, 'costo_total_ingrdte') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

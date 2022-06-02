@@ -30,7 +30,7 @@ class Clasificaciones extends \yii\db\ActiveRecord
         return [
             [['id_clasifplatillo', 'nombre_clasif'], 'required'],
             [['id_clasifplatillo'], 'string', 'max' => 5],
-            [['nombre_clasif'], 'string', 'max' => 30],
+            [['nombre_clasif'], 'string', 'max' => 50],
             [['id_clasifplatillo'], 'unique'],
         ];
     }
@@ -42,7 +42,7 @@ class Clasificaciones extends \yii\db\ActiveRecord
     {
         return [
             'id_clasifplatillo' => Yii::t('app', 'Id Clasifplatillo'),
-            'nombre_clasif' => Yii::t('app', 'Nombre de la clasificación'),
+            'nombre_clasif' => Yii::t('app', 'Nombre Clasif'),
         ];
     }
 
