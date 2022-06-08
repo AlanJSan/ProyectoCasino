@@ -32,6 +32,18 @@ class RecetasController extends Controller
         );
     }
 
+    public function getCosto($id_platillo,$model){
+        $model_receta = Recetas::find()->where(['id_platillo' => $model->id_platillo])->all();
+                $total = 0;
+                foreach($model_receta as $item){
+                    $total += $item->costo_total_ingrdte;
+                }
+
+                $model_platillo = Platillos::findOne(['id_platillo' => $model->id_platillo]);
+                $model_platillo->costo_produccion = $total;
+                $model_platillo->save();
+    }
+
     /**
      * Lists all Recetas models.
      *
@@ -92,15 +104,17 @@ class RecetasController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
 
-                $model_receta = Recetas::find()->where(['id_platillo' => $model->id_platillo])->all();
-                $total = 0;
-                foreach($model_receta as $item){
-                    $total += $item->costo_total_ingrdte;
-                }
+                // $model_receta = Recetas::find()->where(['id_platillo' => $model->id_platillo])->all();
+                // $total = 0;
+                // foreach($model_receta as $item){
+                //     $total += $item->costo_total_ingrdte;
+                // }
 
-                $model_platillo = Platillos::findOne(['id_platillo' => $model->id_platillo]);
-                $model_platillo->costo_produccion = $total;
-                $model_platillo->save();
+                // $model_platillo = Platillos::findOne(['id_platillo' => $model->id_platillo]);
+                // $model_platillo->costo_produccion = $total;
+                // $model_platillo->save();
+
+                $this->getCosto($id_platillo,$model);
 
                 return $this->redirect(['platillos/view', 'id_platillo' => $model->id_platillo]);
                 //, 'id_platillo'=>$model->id_platillo
@@ -127,6 +141,7 @@ class RecetasController extends Controller
         $model = $this->findModel($id_receta);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            $this->getCosto($model->id_platillo,$model);
             return $this->redirect(['platillos/view', 'id_platillo' => $model->id_platillo]);
         }
 
@@ -146,6 +161,8 @@ class RecetasController extends Controller
     {
         $model = Recetas::findOne(['id_receta' => $id_receta]);
         $this->findModel($id_receta)->delete();
+
+        $this->getCosto($model->id_platillo,$model);
         
         return $this->redirect(['platillos/view', 'id_platillo' => $model->id_platillo]);
     }
@@ -165,4 +182,6 @@ class RecetasController extends Controller
 
         //throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+    
 }
