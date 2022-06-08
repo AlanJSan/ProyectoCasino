@@ -52,9 +52,9 @@ class Materiap extends \yii\db\ActiveRecord
     {
         return [
             'id_mp' => Yii::t('app', 'Id Mp'),
-            'nombre_mp' => Yii::t('app', 'Nombre Mp'),
-            'id_uni_medida' => Yii::t('app', 'Id Uni Medida'),
-            'id_clasificacion' => Yii::t('app', 'Id Clasificacion'),
+            'nombre_mp' => Yii::t('app', 'Ingrediente'),
+            'id_uni_medida' => Yii::t('app', 'Unidad de Medida'),
+            'id_clasificacion' => Yii::t('app', 'Clasificacion'),
             'descripcion' => Yii::t('app', 'Descripcion'),
         ];
     }

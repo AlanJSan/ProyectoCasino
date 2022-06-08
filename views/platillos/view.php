@@ -1,5 +1,11 @@
 <?php
 
+use app\models\Platillos;
+use app\models\Recetas;
+//use Illuminate\Support\Facades\URL;
+use yii\helpers\Url;
+use yii\grid\ActionColumn;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -24,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a(Yii::t('app', 'Añadir Ingredientes'), ['/recetas/create_ing', 'id_platillo' => $model->id_platillo], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -38,5 +45,35 @@ $this->params['breadcrumbs'][] = $this->title;
             'fotografia',
         ],
     ]) ?>
+
+<?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        "showFooter" => true,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            "id_platillo",
+            [
+                "value" => 'materiap',
+                "label" => "Ingredientes"
+            ],
+            'cantidad_ingrdte',
+            'id_unid_med_ing',
+            [
+                "label" => "Costo del ingrediente",
+                "attribute" => "costo_total_ingrdte",
+                "value" => "costo_total_ingrdte",
+                "footerOptions" => ["style" => "color:green"],
+                "footer" => Recetas::getTotal($dataProvider->models, "costo_total_ingrdte"),
+            ],
+            
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Recetas $model_receta, $key, $index, $column) {
+                    return URL::toRoute(['recetas/'.$action, 'id_receta' => $model_receta->id_receta]);
+                 }
+            ],
+        ],
+    ]); ?>
 
 </div>

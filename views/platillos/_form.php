@@ -20,7 +20,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'costo_produccion')->textInput(['maxlength' => true]) ?>
+    <!-- <= $form->field($model, 'costo_produccion')->textInput(['maxlength' => true]) ?> -->
+
+    <?= $form->field($model, 'costo_produccion')->hiddenInput(['value' => 0])->label(false) ?>
 
     <?= $form->field($model, 'precio_venta')->textInput(['maxlength' => true]) ?>
 

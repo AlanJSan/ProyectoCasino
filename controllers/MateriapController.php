@@ -2,19 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Platillos;
-use app\models\PlatillosSearch;
-use app\models\Recetas;
-use app\models\RecetasSearch;
-use Yii;
+use app\models\Materiap;
+use app\models\MateriapSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PlatillosController implements the CRUD actions for Platillos model.
+ * MateriapController implements the CRUD actions for Materiap model.
  */
-class PlatillosController extends Controller
+class MateriapController extends Controller
 {
     /**
      * @inheritDoc
@@ -35,13 +32,13 @@ class PlatillosController extends Controller
     }
 
     /**
-     * Lists all Platillos models.
+     * Lists all Materiap models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PlatillosSearch();
+        $searchModel = new MateriapSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -51,37 +48,30 @@ class PlatillosController extends Controller
     }
 
     /**
-     * Displays a single Platillos model.
-     * @param string $id_platillo Id Platillo
+     * Displays a single Materiap model.
+     * @param string $id_mp Id Mp
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id_platillo)
+    public function actionView($id_mp)
     {
-        $searchModel = new RecetasSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->query->andWhere(["id_platillo" => $id_platillo]);
-        $model_receta = Recetas::findOne(['id_platillo' => $id_platillo]);
         return $this->render('view', [
-            'model' => $this->findModel($id_platillo),
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
-            "model_receta" => $model_receta,
+            'model' => $this->findModel($id_mp),
         ]);
     }
 
     /**
-     * Creates a new Platillos model.
+     * Creates a new Materiap model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Platillos();
+        $model = new Materiap();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_platillo' => $model->id_platillo]);
+                return $this->redirect(['view', 'id_mp' => $model->id_mp]);
             }
         } else {
             $model->loadDefaultValues();
@@ -93,18 +83,18 @@ class PlatillosController extends Controller
     }
 
     /**
-     * Updates an existing Platillos model.
+     * Updates an existing Materiap model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id_platillo Id Platillo
+     * @param string $id_mp Id Mp
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id_platillo)
+    public function actionUpdate($id_mp)
     {
-        $model = $this->findModel($id_platillo);
+        $model = $this->findModel($id_mp);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_platillo' => $model->id_platillo]);
+            return $this->redirect(['view', 'id_mp' => $model->id_mp]);
         }
 
         return $this->render('update', [
@@ -113,32 +103,32 @@ class PlatillosController extends Controller
     }
 
     /**
-     * Deletes an existing Platillos model.
+     * Deletes an existing Materiap model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id_platillo Id Platillo
+     * @param string $id_mp Id Mp
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id_platillo)
+    public function actionDelete($id_mp)
     {
-        $this->findModel($id_platillo)->delete();
+        $this->findModel($id_mp)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Platillos model based on its primary key value.
+     * Finds the Materiap model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id_platillo Id Platillo
-     * @return Platillos the loaded model
+     * @param string $id_mp Id Mp
+     * @return Materiap the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id_platillo)
+    protected function findModel($id_mp)
     {
-        if (($model = Platillos::findOne(['id_platillo' => $id_platillo])) !== null) {
+        if (($model = Materiap::findOne(['id_mp' => $id_mp])) !== null) {
             return $model;
         }
 
-        //throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }

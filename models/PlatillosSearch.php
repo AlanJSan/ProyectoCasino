@@ -19,6 +19,7 @@ class PlatillosSearch extends Platillos
         return [
             [['id_platillo', 'nombre_platillo', 'descripcion', 'id_clasifplatillo', 'fotografia'], 'safe'],
             [['costo_produccion', 'precio_venta'], 'number'],
+            //[["clasificacion","string"]]
         ];
     }
 
@@ -48,6 +49,24 @@ class PlatillosSearch extends Platillos
             'query' => $query,
         ]);
 
+        $dataProvider->setSort(
+            [
+                "attributes" => [
+                    "id_platillo",
+                    "nombre_platillo",
+                    "descripcion",
+                    "id_clasifplatillo",
+                    "costo_produccion",
+                    "precio_venta",
+                    "fotografia",
+                    "clasificacion" => [
+                        "asc" => ["clasificacion" => SORT_ASC],
+                        "desc" => ["clasificacion" => SORT_DESC]
+                    ]
+                ]
+            ]
+        );
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -67,6 +86,10 @@ class PlatillosSearch extends Platillos
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
             ->andFilterWhere(['like', 'id_clasifplatillo', $this->id_clasifplatillo])
             ->andFilterWhere(['like', 'fotografia', $this->fotografia]);
+
+        // $query->joinWith(["clasifplatillo"=> function($valor){
+        //     $valor->FilterWhere(["like", "nombre_clasif", $this->clasificacion]);
+        // }]);
 
         return $dataProvider;
     }

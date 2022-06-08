@@ -51,11 +51,11 @@ class Recetas extends \yii\db\ActiveRecord
     {
         return [
             'id_receta' => Yii::t('app', 'Id Receta'),
-            'id_mp' => Yii::t('app', 'Id Mp'),
+            'id_mp' => Yii::t('app', 'Materia Prima'),
             'id_platillo' => Yii::t('app', 'Id Platillo'),
-            'cantidad_ingrdte' => Yii::t('app', 'Cantidad Ingrdte'),
-            'id_unid_med_ing' => Yii::t('app', 'Id Unid Med Ing'),
-            'costo_total_ingrdte' => Yii::t('app', 'Costo Total Ingrdte'),
+            'cantidad_ingrdte' => Yii::t('app', 'Cantidad Ingrediente'),
+            'id_unid_med_ing' => Yii::t('app', 'Unidad de Medida'),
+            'costo_total_ingrdte' => Yii::t('app', 'Costo Total del Ingrediente'),
         ];
     }
 
@@ -92,5 +92,17 @@ class Recetas extends \yii\db\ActiveRecord
     public function getUnidMedIng()
     {
         return $this->hasOne(Unidadesmeding::className(), ['id_unid_med_ing' => 'id_unid_med_ing']);
+    }
+
+    public static function getTotal($provider, $fieldName){
+        $total = 0;
+
+        foreach($provider as $item){
+            $total += $item[$fieldName];
+        }
+
+        $total = number_format($total,2);
+
+        return $total;
     }
 }

@@ -86,4 +86,16 @@ class Platillos extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Recetas::className(), ['id_platillo' => 'id_platillo']);
     }
+
+    public function getIngredientes(){
+        $ingredientes = Recetas::find()->where(["id_platillo" => $this->id_platillo])->all();
+        $lista = [];
+
+        foreach ($ingredientes as $ingrediente) {
+            $lista[] = $ingrediente -> id_mp;
+        }
+        
+        //return $ingredientes[0];
+        return $lista[0];
+    }
 }
