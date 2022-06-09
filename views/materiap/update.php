@@ -9,7 +9,7 @@ $this->title = Yii::t('app', 'Actualizar Ingrediente: {name}', [
     'name' => $model->nombre_mp,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Materiaps'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->nombre_mp, 'url' => ['view', 'nombre_mp' => $model->nombre_mp]];
+$this->params['breadcrumbs'][] = ['label' => $model->nombre_mp, 'url' => ['view', 'id_mp' => $model->id_mp]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="materiap-update">

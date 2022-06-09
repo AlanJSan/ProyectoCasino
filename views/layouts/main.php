@@ -41,9 +41,12 @@ AppAsset::register($this);
             // ['label' => 'About', 'url' => ['/site/about']],
             // ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Platillos', 'url' => ['/platillos/index']],
-            ['label' => 'Recetas', 'url' => ['/recetas/index']],
             ['label' => 'Clasificaciones', 'url' => ['/clasificaciones/index']],
             ['label' => 'Ingredientes', 'url' => ['/materiap/index']],
+            ['label' => 'Unidades de medida', 'url' => '#','items'=> [
+                ['label' => 'Para ingredientes de platillo', 'url' => ['/unidadesmeding/index']],
+                ['label' => 'Para ingredientes', 'url' => ['/unidadesmedida/index']]
+            ]],
             // Yii::$app->user->isGuest ? (
             //     ['label' => 'Login', 'url' => ['/site/login']]
             // ) : (
