@@ -51,7 +51,7 @@ class Materiap extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_mp' => Yii::t('app', 'Id Mp'),
+            'id_mp' => Yii::t('app', 'Clave Ingrediente'),
             'nombre_mp' => Yii::t('app', 'Ingrediente'),
             'id_uni_medida' => Yii::t('app', 'Unidad de Medida'),
             'id_clasificacion' => Yii::t('app', 'Clasificacion'),

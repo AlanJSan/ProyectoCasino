@@ -45,8 +45,8 @@ class Unidadesmedida extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_uni_medida' => Yii::t('app', 'Id Uni Medida'),
-            'nombre_uni_medida' => Yii::t('app', 'Nombre Uni Medida'),
+            'id_uni_medida' => Yii::t('app', 'Clave'),
+            'nombre_uni_medida' => Yii::t('app', 'Nombre'),
             'abreviatura' => Yii::t('app', 'Abreviatura'),
             'descripcion' => Yii::t('app', 'Descripcion'),
         ];

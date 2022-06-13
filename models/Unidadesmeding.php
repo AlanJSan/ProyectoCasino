@@ -41,8 +41,8 @@ class Unidadesmeding extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_unid_med_ing' => Yii::t('app', 'Id Unid Med Ing'),
-            'nombre_unid_med_ing' => Yii::t('app', 'Nombre Unid Med Ing'),
+            'id_unid_med_ing' => Yii::t('app', 'Clave'),
+            'nombre_unid_med_ing' => Yii::t('app', 'Nombre'),
         ];
     }
 

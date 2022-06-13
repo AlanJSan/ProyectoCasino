@@ -5,11 +5,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Unidadesmeding */
 
-$this->title = Yii::t('app', 'Update Unidadesmeding: {name}', [
-    'name' => $model->id_unid_med_ing,
+$this->title = Yii::t('app', 'Actualizar Unidades de Medida (Platillos): {name}', [
+    'name' => $model->nombre_unid_med_ing,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Unidadesmedings'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_unid_med_ing, 'url' => ['view', 'id_unid_med_ing' => $model->id_unid_med_ing]];
+$this->params['breadcrumbs'][] = ['label' => $model->nombre_unid_med_ing, 'url' => ['view', 'id_unid_med_ing' => $model->id_unid_med_ing]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="unidadesmeding-update">

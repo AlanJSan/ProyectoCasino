@@ -41,8 +41,8 @@ class Clasificaciones extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_clasifplatillo' => Yii::t('app', 'Id Clasifplatillo'),
-            'nombre_clasif' => Yii::t('app', 'Nombre Clasif'),
+            'id_clasifplatillo' => Yii::t('app', 'Clave Clasificación'),
+            'nombre_clasif' => Yii::t('app', 'Nombre de la Clasificación'),
         ];
     }
 

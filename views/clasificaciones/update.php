@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $model app\models\Clasificaciones */
 
 $this->title = Yii::t('app', 'Update Clasificaciones: {name}', [
-    'name' => $model->id_clasifplatillo,
+    'name' => $model->nombre_clasif,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Clasificaciones'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_clasifplatillo, 'url' => ['view', 'id_clasifplatillo' => $model->id_clasifplatillo]];
+$this->params['breadcrumbs'][] = ['label' => $model->nombre_clasif, 'url' => ['view', 'id_clasifplatillo' => $model->id_clasifplatillo]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="clasificaciones-update">

@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\UnidadesmedingSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Unidadesmedings');
+$this->title = Yii::t('app', 'Unidades de Medida (Platillos)');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="unidadesmeding-index">

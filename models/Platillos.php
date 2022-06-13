@@ -52,12 +52,12 @@ class Platillos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_platillo' => Yii::t('app', 'Id Platillo'),
+            'id_platillo' => Yii::t('app', 'Clave Platillo'),
             'nombre_platillo' => Yii::t('app', 'Nombre Platillo'),
             'descripcion' => Yii::t('app', 'Descripcion'),
             'costo_produccion' => Yii::t('app', 'Costo Produccion'),
             'precio_venta' => Yii::t('app', 'Precio Venta'),
-            'id_clasifplatillo' => Yii::t('app', 'Id Clasifplatillo'),
+            'id_clasifplatillo' => Yii::t('app', 'Clasificación del Platillo'),
             'fotografia' => Yii::t('app', 'Fotografia'),
         ];
     }

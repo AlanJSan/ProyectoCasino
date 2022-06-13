@@ -29,10 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_clasifplatillo',
+            [
+                "attribute" => "id_clasifplatillo",
+                "label" => "Clave Clasificación"
+            ],
             [
                 "attribute" => "nombre_clasif",
-                "label" => "Nombre de la clasificación"
+                "label" => "Nombre de la Clasificación"
             ],
             [
                 'class' => ActionColumn::className(),
